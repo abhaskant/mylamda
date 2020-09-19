@@ -1,0 +1,20 @@
+var AWS = require('aws-sdk');
+AWS.config.update({ region: 'us-east-1' });
+var ec2 = new AWS.EC2();
+
+
+function initInstance() {
+    var params = {
+        InstanceIds: [
+            "i-096f05c8c8082e4e8"
+        ]
+    };
+		ec2.startInstances(params, function(err,data) {
+		if (err) console.log (err, err.stack);	//anerroccured
+		else    console.log(data);
+			
+    });
+    
+}
+    
+module.exports.handler =initInstance;
